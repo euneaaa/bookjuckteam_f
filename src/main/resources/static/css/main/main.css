@@ -1,0 +1,103 @@
+* { margin: 0; padding: 0; list-style: none; box-sizing: border-box; }
+
+html, body { width: 100%; height: 100%;}
+
+body { min-width: 580px; min-height: 100%; display: grid; grid-template-rows: auto 1fr 50px; position: relative }
+
+
+/* ================  메인배너부분 ================== */
+
+
+.back_color_1 { background-color: rgb(248, 244, 216); width: 100%; height: 400px;}
+.back_color_2 { background-color: rgb(251, 234, 239); width: 100%; height: 400px;}
+.back_color_3 { background-color: rgb(218, 236, 240); width: 100%; height: 400px;}
+.back_color_4 { background-color: rgb(230, 233, 246); width: 100%; height: 400px;}
+
+
+
+
+/* ================  메인베스트부분 ================== */
+
+
+.best-list__body >div .best-list__item { width: 250px; margin: 30px 0 40px; padding: 0 20px; }
+.best-list__body >div .best-list__item > ul {padding: 0;}
+
+.font_bold { font-size: large; font-weight: bold; }
+
+
+.menuDiv {
+    background-color:white; width: 100%; height: 50px; display: flex; align-items: center; justify-content: center;
+    border-top: solid 1px #969696; border-bottom: solid 1px #969696;
+}
+
+.border-left { border-left: solid 1px #969696; }
+.border-right { border-right: solid 1px #969696; }
+
+.clicked { background-color: #daefe0; font-size:large; border-bottom: none; border-left: none; border-right: none; overflow: visible;}
+.click_color { background-color: #daefe0;}
+    /*#dae8e8*/
+
+
+.mask{
+    width: 1000px;
+    height: 420px;
+    margin: 0 auto 50px auto;
+    overflow: hidden;
+}
+
+.btn_wrap {
+    width: 1000px;
+    height: 50px;
+}
+
+.book_wrap {
+    width: 1000px;
+    height: 350px;
+}
+
+.book_each {
+    width: 1000px;
+    height: 350px;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+.text_oneline{
+    width        : 200px;     /* 너비는 변경될수 있습니다. */
+    text-overflow: ellipsis;  /* 위에 설정보다 길면 말줄임표처럼 표시합니다. */
+    white-space  : nowrap;    /* 줄바꿈을 하지 않습니다. */
+    overflow     : hidden;    /* 내용이 길면 감춤니다 */
+    display      : block;     /* ie6이상 현재요소를 블럭처리합니다. */
+}
+
+.text_multiline{
+    text-overflow: ellipsis;
+    overflow     : hidden;
+    display      : -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+}
+
+/*이달의 도서 부분*/
+
+.monthbook_box {
+    display: grid;
+    justify-items: stretch;
+    width: 1000px;
+    grid-template-columns: repeat(4, 242px);
+    column-gap: 10px;
+    row-gap: 30px;
+    padding: 30px 0 30px;
+    border: 1px solid black;
+}
+
+.monthbook_box_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.monthbook_box_title {
+    width: 200px;
+    text-align: center;
+}

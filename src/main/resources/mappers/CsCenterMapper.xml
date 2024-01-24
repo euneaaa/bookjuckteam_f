@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.bookjuck.cscenter.CsCenterMapper">
+    <!-- FaQ리스트 가져오는 셀렉트   -->
+    <select id="selFaqList" resultType="FaqEntity">
+        SELECT * FROM t_faq
+    </select>
+
+    <!-- 1대1문의글 저장하는 곳-->
+    <insert id="inscomplaint">
+        INSERT INTO t_complaint
+        (com_email, com_cate, com_ctnt, iuser, filename, filepath)
+        VALUES
+        (#{com_email}, #{com_cate}, #{com_ctnt}, #{iuser}, #{filename}, #{filepath})
+    </insert>
+
+
+    <!-- 공지사항 가져오는 셀렉트-->
+    <select id="selNotice" resultType="NoticeEntity">
+        SELECT * FROM t_notice
+        ORDER BY inotice DESC
+    </select>
+
+    <!-- 공지사항 세부내용 들고 오는 셀렉트-->
+    <select id="selItemNotice" resultType="NoticeEntity">
+        SELECT * FROM t_notice
+        WHERE inotice = #{inotice}
+    </select>
+</mapper>

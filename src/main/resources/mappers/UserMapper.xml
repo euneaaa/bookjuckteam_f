@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.bookjuck.user.UserMapper">
+    <select id="selUser" resultType="com.project.bookjuck.user.model.UserEntity">
+        SELECT * FROM t_user
+        WHERE
+        <if test=" uid != null and uid != '' ">
+            uid = #{uid}
+        </if>
+        <if test=" iuser > 0 ">
+            AND iuser = ${iuser}
+        </if>
+    </select>
+
+
+    <insert id="insUser">
+        INSERT INTO t_user
+            (uid, upw, nm, addr, email, birth, ph, gender)
+        VALUES (#{uid}, #{upw}, #{nm}, #{addr}, #{email}, #{birth}, #{ph}, ${gender})
+    </insert>
+
+    <update id="updPw">
+        UPDATE t_user
+        SET
+        <if test="upw != null and upw != '' ">
+            upw = #{upw}
+        </if>
+        WHERE iuser = ${iuser}
+    </update>
+
+    <select id="selPw" resultType="com.project.bookjuck.user.model.UserEntity">
+        SELECT upw
+        FROM t_user
+        WHERE iuser = ${iuser}
+    </select>
+
+    <!--고객 주소 나눠받으려고-->
+    <select id="selUser2" resultType="com.project.bookjuck.user.model.UserVO">
+        SELECT * FROM t_user
+        WHERE
+        <if test=" uid != null and uid != '' ">
+            uid = #{uid}
+        </if>
+        <if test=" iuser > 0 ">
+            AND iuser = ${iuser}
+        </if>
+    </select>
+
+    <!-- 1대1문의글 불러오는 곳-->
+    <select id="selComplain" resultType="com.project.bookjuck.cscenter.model.ComplaintEntity">
+        SELECT *
+        FROM t_complaint A
+        LEFT JOIN t_user B
+        ON A.iuser = B.iuser
+        WHERE A.iuser = ${iuser}
+    </select>
+
+    <update id="updUser">
+        UPDATE t_user
+        SET email = #{email}, addr  = #{addr}
+        where iuser = ${iuser}
+    </update>
+
+    <delete id="delUser">
+        delete FROM t_user
+        WHERE upw = ${upw} AND iuser = ${iuser}
+    </delete>
+
+</mapper>

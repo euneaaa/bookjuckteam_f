@@ -1,0 +1,48 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="temp/thymeleaf_layout">
+
+<head>
+    <meta charset="UTF-8">
+    <title>cscenter</title>
+    <link rel="stylesheet" th:href="@{/css/cscenter/cscenter.css}">
+</head>
+
+<th:block layout:fragment="content">
+    <div class="cscenter">
+        <div class="notice container-lg px-4 py-4 m-t-20">
+            <div class="flex justify_content_center m-b-10">
+                <div><a href="/cscenter/notice" class="font_bold"> 공지사항   </a> </div>
+                <div>&nbsp;&nbsp;|&nbsp;&nbsp;</div>
+                <div><a href="/cscenter/faq">자주묻는 질문  </a> </div>
+                <div>&nbsp;&nbsp;|&nbsp;&nbsp;</div>
+                <div><a href="/cscenter/complaint">1:1 문의 </a> </div>
+            </div>
+
+            <div class="pb-2 flex justify_content_center">
+                <h2>북적북적 공지사항</h2>
+            </div>
+
+            <div class="noticeboardtable flex-direc-column row g-2 py-3 row-cols-lg-3">
+                <table class="table table-hover">
+                    <thead>
+                    <tr class="notice">
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>작성일</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--공지리스트 만들어지는 부분-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/cscenter/cscenter.js"></script>
+
+</th:block>
+
+

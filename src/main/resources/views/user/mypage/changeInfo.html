@@ -1,0 +1,62 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="user/thymeleaf_userlayout">
+
+<head>
+    <title></title>
+    <link rel="stylesheet" th:href="@{/css/user/mypage.css}">
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+</head>
+
+<th:block layout:fragment="userContent">
+
+        <!--서브메뉴 아이템 클릭시 마이페이지 디테일창-->
+        <div class="flex center back_color_purple h-100">
+            <div class="width500p">
+                <form th:action="@{/user/mypage/changeInfo}" method="post" id="info-frm">
+                <div class="changeinfo_head m-b-10 m-t-10">회원 정보 수정</div>
+
+                <div class="m-t-10"><b>아이디</b></div>
+                <div><input type="text" readonly th:value="${@utils.getLoginUser().getUid()}" class="text_box back_color_grey4"></div>
+
+                <div class="m-t-10"><b>이름</b></div>
+                <div><input type="text" readonly th:value="${@utils.getLoginUser().getNm()}" class="text_box back_color_grey4"></div>
+
+
+                <div class="m-t-10"><b>생년월일</b></div>
+                <div><input type="text" readonly th:value="${@utils.getLoginUser().getBirth()}" class="text_box back_color_grey4"></div>
+
+<!-- 변경하기 누르면 text readonly에서 text로 바뀌면서 인증번호 발송 버튼 나오고 인증번호 치고 확인 누르면 바뀌는 걸루..-->
+                <div class="m-t-10"><b>휴대폰번호</b></div>
+                <div class="flex">
+                    <input type="text" readonly th:value="${@utils.getLoginUser().getPh()}" class="text_box m-r-10 back_color_grey4" >
+                    <input type="button" value="변경하기" class="btn">
+                </div>
+
+                <div class="m-t-10"><b>이메일</b></div>
+                <div class="flex" id="email_div">
+                    <input type="text" readonly  th:value="${@utils.getLoginUser().getEmail()}" class="text_box m-r-10 back_color_grey4" id="email_text" name='email'>
+                    <input type="button" value="변경하기" class="btn" id="email_btn">
+                </div>
+                <div><span id="sucKey" class="color_black"></span></div>
+
+                <div class="m-t-10">
+                    <b>주소</b>
+                </div>
+                    <input type="hidden" id="sumAddr" name="addr" th:value="${@utils.getLoginUser().getAddr()}">
+                <div><input type="text" th:value="${@utils.getLoginUser2().getAddr1()}" id="addr1" class="text_box back_color_grey4" readonly ></div>
+                    <div><input type="text" th:value="${@utils.getLoginUser2().getAddr2()}" id="addr2" class="text_box back_color_grey4" readonly></div>
+                    <input type="button" value="변경하기" class="btn m-t-10" id="addr_btn">
+                <div class="flex justify_flex_end">
+                    <input type="button" value="수정완료" id="change_info" class="change_btn m-b-30" style="">
+                </div>
+                </form>
+
+            </div>
+        </div>
+
+    <script th:src="@{/js/user/changeInfo.js}"></script>
+</th:block>
+
